@@ -159,4 +159,115 @@
 
       const diyaBlessings = [
         { title: 'Divine Abundance 🪔', text: 'May your life be overflowing with unending sweetness, peace, and eternal light.' },
-        { title: 'Pure Joy ✨', text: 'May your heart always laugh as freely and brightly as it
+        { title: 'Pure Joy ✨', text: 'May your heart always laugh as freely and brightly as it does today.' },
+        { title: 'Shared Dreams 💍', text: 'May every step we take together bring us closer to a lifetime of happiness.' }
+      ];
+
+      const cards = [
+        { title: 'Grace & Abundance', content: 'They pray for prosperity on Diwali. When I look at you, I realize my home is already blessed with the only light that truly matters.' },
+        { title: '✨ A Verse For You ✨', content: '"Every diya that glows tonight, is a reflection of your radiant light. Every festival of lamps we share, is a promise whispered in a prayer."' },
+        { title: 'OUR FOREVER BEGINS', content: 'Soon, our festive lights will merge into one home, one shared heartbeat, and a lifetime of celebrating every joy side by side.' }
+      ];
+
+      return (
+        <div onPointerDown={handlePointerBurst} className="min-h-screen relative overflow-x-hidden select-none" style={{ background: 'radial-gradient(circle at 50% 20%, #2D1B4E 0%, #170C2D 60%, #0B0714 100%)' }}>
+          <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
+
+          <button onClick={toggleAudio} className="fixed top-5 right-5 z-50 bg-[#2D1B4E]/60 border border-[#FFB74D] text-[#FFF9C4] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-md shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer">
+            <span>🎵</span> {isPlaying ? 'Pause Chimes' : 'Play Festive Melody'}
+          </button>
+
+          {welcomeOpen && (
+            <div className="fixed inset-0 z-40 bg-[#0B0714]/95 backdrop-blur-lg flex flex-col justify-center items-center text-center p-6">
+              <p className="text-[#FFB74D] uppercase tracking-widest text-xs font-semibold mb-3">For my greatest blessing...</p>
+              <h1 className="font-serif text-5xl md:text-6xl text-[#E6E6FA] mb-4 drop-shadow-[0_0_20px_rgba(230,230,250,0.5)]">Shravika ❤️</h1>
+              <p className="italic text-[#87CEEB] max-w-sm mb-8 text-base leading-relaxed">This Diwali, my world shines because you are in it.</p>
+              <button onClick={(e) => { e.stopPropagation(); setWelcomeOpen(false); if (!isPlaying) toggleAudio(); }} className="bg-gradient-to-r from-[#FFB74D] to-[#87CEEB] text-[#0B0714] font-bold px-8 py-3 rounded-full text-sm tracking-wider shadow-xl hover:scale-105 transition-transform cursor-pointer">
+                OPEN YOUR DIWALI SURPRISE ✨
+              </button>
+            </div>
+          )}
+
+          <main className="relative z-10 max-w-lg mx-auto px-4 py-16 text-center space-y-8">
+            <div className="bg-[#2D1B4E]/40 border border-[#E6E6FA]/30 backdrop-blur-md rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FFB74D] via-[#FFF9C4] to-[#87CEEB]" />
+              <span className="text-xs uppercase tracking-widest text-[#FFB74D] font-semibold">Deepavali 2026</span>
+              <h2 className="text-2xl font-serif text-[#FFF9C4] mt-2 mb-4 leading-snug">"THIS DIWALI, MY GREATEST BLESSING IS YOU ❤️"</h2>
+              <p className="text-sm text-[#E6E6FA] leading-relaxed">Every lamp glows brighter with the thought of you, and every prayer leads straight to our future together.</p>
+
+              <div className="mt-8 flex flex-col items-center">
+                {!potRevealed ? (
+                  <button onClick={(e) => { e.stopPropagation(); setPotRevealed(true); }} className="group relative cursor-pointer focus:outline-none">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-b from-[#FFB74D] to-[#2D1B4E] p-1 shadow-[0_0_25px_rgba(255,183,77,0.4)] transition-transform group-hover:scale-110 flex items-center justify-center">
+                      <div className="w-full h-full rounded-full bg-[#170C2D] flex items-center justify-center text-4xl">🏺</div>
+                    </div>
+                    <p className="text-xs text-[#87CEEB] uppercase tracking-wider mt-3 animate-pulse font-medium">Tap the Sacred Matka to Reveal</p>
+                  </button>
+                ) : (
+                  <div className="bg-[#170C2D]/80 border border-[#FFB74D]/50 rounded-2xl p-6 text-left space-y-3 shadow-inner">
+                    <h3 className="font-serif text-[#FFB74D] text-lg font-bold">My Dearest Shravika,</h3>
+                    <p className="text-xs text-[#FFF9C4] leading-relaxed">As we celebrate this festival of lights, I find myself overwhelmed with gratitude. Of all the blessings Goddess Lakshmi could grant, bringing you into my life is the greatest gift I could ever ask for.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-[#2D1B4E]/40 border border-[#87CEEB]/30 backdrop-blur-md rounded-3xl p-8 shadow-2xl relative">
+              <div className="min-h-[140px] flex flex-col justify-center">
+                <h3 className="font-serif text-xl text-[#FFB74D] mb-3">{cards[currentCard].title}</h3>
+                <p className="text-sm text-[#E6E6FA] italic leading-relaxed">{cards[currentCard].content}</p>
+              </div>
+              <div className="flex justify-center gap-2 mt-6">
+                {cards.map((_, idx) => (
+                  <button key={idx} onClick={(e) => { e.stopPropagation(); setCurrentCard(idx); }} className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${currentCard === idx ? 'bg-[#FFB74D] w-6' : 'bg-[#E6E6FA]/40'}`} />
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-[#2D1B4E]/40 border border-[#FFF9C4]/30 backdrop-blur-md rounded-3xl p-6 shadow-2xl">
+              <h3 className="font-serif text-base text-[#FFF9C4] mb-4">Click a Diya for a Blessing</h3>
+              <div className="flex justify-around items-center">
+                {diyaBlessings.map((blessing, idx) => (
+                  <button key={idx} onClick={(e) => { e.stopPropagation(); setActiveModal(blessing); }} className="text-4xl transition-transform hover:scale-125 focus:outline-none drop-shadow-[0_0_12px_rgba(255,183,77,0.8)] animate-bounce cursor-pointer" style={{ animationDelay: `${idx * 0.2}s` }}>
+                    🪔
+                  </button>
+                ))}
+              </div>
+              <p className="text-[11px] text-[#87CEEB] uppercase tracking-wider mt-5 font-medium animate-pulse">✨ Tap any diya to reveal a secret blessing ✨</p>
+            </div>
+
+            <div className="bg-gradient-to-b from-[#2D1B4E]/80 to-[#0B0714] border-2 border-[#FFB74D]/60 backdrop-blur-md rounded-3xl p-8 shadow-2xl text-center space-y-4">
+              <h2 className="font-serif text-xl text-[#FFF9C4] leading-snug">"THIS DIWALI,<br />I WISH FOR A LIFETIME<br />OF LIGHTS AND LOVE WITH YOU."</h2>
+              <p className="text-xs text-[#E6E6FA]">Happy Diwali, My Beautiful Shravika! ❤️</p>
+              <div className="font-serif text-xl text-[#FFB74D] pt-2">Yours Forever,<br />Krishna ❤️</div>
+
+              <button onClick={(e) => { e.stopPropagation(); setLastThing(!lastThing); }} className="mt-4 border border-dashed border-[#FFB74D] text-[#FFB74D] px-6 py-2 rounded-full text-xs tracking-widest uppercase hover:bg-[#FFB74D]/20 transition-all cursor-pointer">
+                ONE LAST THING... ❤️
+              </button>
+
+              {lastThing && (
+                <div className="mt-4 bg-[#170C2D] border border-[#87CEEB]/40 rounded-xl p-4 text-xs italic text-[#87CEEB]">
+                  "Out of all the blessings this Diwali could bring, I'm infinitely happiest that it brought you into my life."
+                </div>
+              )}
+            </div>
+          </main>
+
+          {activeModal && (
+            <div onClick={() => setActiveModal(null)} className="fixed inset-0 z-50 bg-[#0B0714]/80 backdrop-blur-sm flex justify-center items-center p-4">
+              <div onClick={(e) => e.stopPropagation()} className="bg-[#2D1B4E] border border-[#FFB74D] rounded-2xl p-6 max-w-xs text-center shadow-2xl space-y-3">
+                <h4 className="font-serif text-lg text-[#FFB74D]">{activeModal.title}</h4>
+                <p className="text-xs text-[#E6E6FA] leading-relaxed">{activeModal.text}</p>
+                <button onClick={() => setActiveModal(null)} className="bg-[#FFB74D] text-[#0B0714] text-xs font-bold px-5 py-2 rounded-full mt-2 cursor-pointer">Close</button>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Fixed for React 18
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
