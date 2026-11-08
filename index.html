@@ -159,27 +159,4 @@
 
       const diyaBlessings = [
         { title: 'Divine Abundance 🪔', text: 'May your life be overflowing with unending sweetness, peace, and eternal light.' },
-        { title: 'Pure Joy ✨', text: 'May your heart always laugh as freely and brightly as it does today.' },
-        { title: 'Shared Dreams 💍', text: 'May every step we take together bring us closer to a lifetime of happiness.' }
-      ];
-
-      const cards = [
-        { title: 'Grace & Abundance', content: 'They pray for prosperity on Diwali. When I look at you, I realize my home is already blessed with the only light that truly matters.' },
-        { title: '✨ A Verse For You ✨', content: '"Every diya that glows tonight, is a reflection of your radiant light. Every festival of lamps we share, is a promise whispered in a prayer."' },
-        { title: 'OUR FOREVER BEGINS', content: 'Soon, our festive lights will merge into one home, one shared heartbeat, and a lifetime of celebrating every joy side by side.' }
-      ];
-
-      return (
-        <div onPointerDown={handlePointerBurst} className="min-h-screen relative overflow-x-hidden select-none" style={{ background: 'radial-gradient(circle at 50% 20%, #2D1B4E 0%, #170C2D 60%, #0B0714 100%)' }}>
-          <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
-
-          <button onClick={toggleAudio} className="fixed top-5 right-5 z-50 bg-[#2D1B4E]/60 border border-[#FFB74D] text-[#FFF9C4] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-md shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer">
-            <span>🎵</span> {isPlaying ? 'Pause Chimes' : 'Play Festive Melody'}
-          </button>
-
-          {welcomeOpen && (
-            <div className="fixed inset-0 z-40 bg-[#0B0714]/95 backdrop-blur-lg flex flex-col justify-center items-center text-center p-6">
-              <p className="text-[#FFB74D] uppercase tracking-widest text-xs font-semibold mb-3">For my greatest blessing...</p>
-              <h1 className="font-serif text-5xl md:text-6xl text-[#E6E6FA] mb-4 drop-shadow-[0_0_20px_rgba(230,230,250,0.5)]">Shravika ❤️</h1>
-              <p className="italic text-[#87CEEB] max-w-sm mb-8 text-base leading-relaxed">This Diwali, my world shines because you are in it.</p>
-              <button onClick={(e) => { e.stopPropagation(); setWelcomeOpen(false); if
+        { title: 'Pure Joy ✨', text: 'May your heart always laugh as freely and brightly as it
